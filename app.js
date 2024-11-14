@@ -29,6 +29,13 @@ app.get("/edit/:filename", function (req, res) {
      
   });
   });
+
+  app.post("/update/:filename", function (req, res) {
+    fs.writeFile(`./hisaab/${req.params.filename}`, req.body.content, function(err){
+      if (err) return res.status(500).send(err);
+      res.redirect("/");
+    })
+    });
   
 
 
